@@ -1,0 +1,77 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "flowertune-nlp"
+version = "1.0.0"
+description = ""
+license = "Apache-2.0"
+dependencies = [
+    "flwr[simulation]>=1.13.0",
+    "flwr-datasets>=0.3.0",
+    "torch==2.5.1",
+    "trl==0.8.1",
+    "bitsandbytes==0.45.0",
+    "scipy==1.13.0",
+    "peft==0.6.2",
+    "transformers @ git+ssh://git@github.com/NX-AI/transformers.git@f99443e2c8bc2e929218c68d37ae96b4e0a11bd7",
+    "sentencepiece==0.2.0",
+    "omegaconf==2.3.0",
+    "hf_transfer==0.1.8",
+    "scikit-learn==1.6.0",
+    "mlstm_kernels==1.0.3",
+    "xlstm==2.0.1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.flwr.app]
+publisher = "mrs83"
+
+[tool.flwr.app.components]
+serverapp = "flowertune_nlp.server_app:app"
+clientapp = "flowertune_nlp.client_app:app"
+
+[tool.flwr.app.config]
+model.name = "NX-AI/xLSTM-7b"
+model.quantization = 4
+model.gradient-checkpointing = true
+model.lora.peft-lora-r = 16
+model.lora.peft-lora-alpha = 128
+train.save-every-round = 5
+train.learning-rate-max = 5e-5
+train.learning-rate-min = 1e-6
+train.seq-length = 512
+train.training-arguments.output-dir = ""
+train.training-arguments.learning-rate = ""
+train.training-arguments.per-device-train-batch-size = 8
+train.training-arguments.gradient-accumulation-steps = 1
+train.training-arguments.logging-steps = 1
+train.training-arguments.num-train-epochs = 3
+train.training-arguments.max-steps = 5
+train.training-arguments.save-steps = 1000
+train.training-arguments.save-total-limit = 10
+train.training-arguments.max-grad-norm = 1.0
+train.training-arguments.gradient-checkpointing = true
+train.training-arguments.bf16 = true
+train.training-arguments.tf32 = true
+train.training-arguments.lr-scheduler-type = "constant"
+strategy.fraction-fit = 0.25
+strategy.fraction-evaluate = 0.0
+num-server-rounds = 100
+
+[tool.flwr.app.config.static]
+dataset.name = "vicgalle/alpaca-gpt4"
+
+[tool.flwr.federations]
+default = "local-simulation"
+
+[tool.flwr.federations.local-simulation]
+options.num-supernodes = 20
+options.backend.client-resources.num-cpus = 6
+options.backend.client-resources.num-gpus = 1.0
