@@ -1,2 +1,2 @@
-INFO :      aggregate_fit: received 5 results and 0 failures
-INFO :      Communication budget: used 58765.62 MB (+293.83 MB this round) / 200,000 MB
+INFO :      Communication budget: used 60609.38 MB (+303.05 MB this round) / 200,000 MB
+INFO :      fit progress: (100, 0.0, {}, 26271.441357703996)

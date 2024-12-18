@@ -64,7 +64,8 @@ def get_model(model_cfg: DictConfig):
             "k_proj",
             "v_proj",
             "LinearHeadwiseExpand",
-        ]
+        ],
+        use_dora=True,
     )
 
     if model_cfg.gradient_checkpointing:

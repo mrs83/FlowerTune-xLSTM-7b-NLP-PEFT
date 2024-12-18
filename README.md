@@ -15,7 +15,7 @@ The fine-tuning results have been submitted as a PEFT adapter and can be accesse
 
 ## Methodology
 
-This experiment performs federated LLM fine-tuning with [LoRA](https://arxiv.org/pdf/2106.09685) using the [🤗PEFT](https://huggingface.co/docs/peft/en/index) library.
+This experiment performs federated LLM fine-tuning with [DoRA](https://arxiv.org/abs/2402.09353) using the [🤗PEFT](https://huggingface.co/docs/peft/en/index) library.
 The clients' models are aggregated with FedAvg strategy.
 This provides a baseline performance for the leaderboard of General NLP challenge.
 
@@ -26,7 +26,7 @@ For the **NX-AI/xLSTM-7b** model I adopted the following fine-tuning methodology
 
 - **Precision**: `bf16` for model weights.
 - **Quantization**: `4-bit` quantization for reduced memory usage.
-- **LoRA Configuration**:
+- **[DoRA](https://arxiv.org/abs/2402.09353) Configuration**:
   - Rank (r): `16`
   - Alpha: `128`
   - Target Modules:
@@ -58,14 +58,14 @@ This methodology enabled efficient fine-tuning within constrained resources whil
 
 ### Evaluation Results (Accuracy)
 
-- **STEM**: 12.62 %
-- **Social Sciences**: 14.95 %
-- **Humanities**: 13.56 %
-- **Average**: 13.71 %
+- **STEM**: 13.67 %
+- **Social Sciences**: 14.84 %
+- **Humanities**: 17.55 %
+- **Average**: 15.35 %
 
 ### Communication Budget
 
-58765.62 Megabytes
+60609.38 Megabytes
 
 
 ## Environments setup

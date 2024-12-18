@@ -14,7 +14,7 @@ dependencies = [
     "trl==0.8.1",
     "bitsandbytes==0.45.0",
     "scipy==1.13.0",
-    "peft==0.6.2",
+    "peft==0.14.0",
     "transformers @ git+ssh://git@github.com/NX-AI/transformers.git@f99443e2c8bc2e929218c68d37ae96b4e0a11bd7",
     "sentencepiece==0.2.0",
     "omegaconf==2.3.0",
