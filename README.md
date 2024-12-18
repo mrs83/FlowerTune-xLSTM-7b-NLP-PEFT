@@ -59,8 +59,8 @@ This methodology enabled efficient fine-tuning within constrained resources whil
 ### Evaluation Results (Accuracy)
 
 - **STEM**: 13.67 %
-- **Social Sciences**: 14.84 %
-- **Humanities**: 17.55 %
+- **Social Sciences**: 17.55 %
+- **Humanities**: 14.84 %
 - **Average**: 15.35 %
 
 ### Communication Budget
