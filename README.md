@@ -73,6 +73,15 @@ This methodology enabled efficient fine-tuning within constrained resources whil
 Project dependencies are defined in `pyproject.toml`. Install them in an activated Python environment with:
 
 ```shell
+# Install Python 3.11 with pyenv
+pyenv install 3.11.11
+pyenv global 3.11.11
+
+# Create and activate the virtualenv
+pyenv virtualenv flower
+pyenv activate 3.11.11/envs/flower
+
+# Install package dependencies
 pip install -e .
 ```
 
