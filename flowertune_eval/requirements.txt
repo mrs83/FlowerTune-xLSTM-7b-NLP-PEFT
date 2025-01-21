@@ -6,3 +6,4 @@ sentencepiece==0.2.0
 protobuf==5.27.1
 bitsandbytes==0.43.1
 hf_transfer==0.1.8
+transformers @ git+https://github.com/NX-AI/transformers.git@660558dcbeca0e93b698984cc63dbdec46cdd5bd

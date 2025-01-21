@@ -10,14 +10,22 @@ The [MMLU](https://huggingface.co/datasets/lukaemon/mmlu) dataset is used for th
 git clone --depth=1 https://github.com/adap/flower.git && mv flower/benchmarks/flowertune-llm/evaluation/general-nlp ./flowertune-eval-general-nlp && rm -rf flower && cd flowertune-eval-general-nlp
 ```
 
-Create a new Python environment (we recommend Python 3.10), activate it, then install dependencies with:
+Create a new Python environment (we recommend Python 3.11), activate it, then install dependencies with:
 
 ```shell
+# Install Python 3.11 with pyenv
+pyenv install 3.11.11
+pyenv global 3.11.11
+
+# Create and activate the virtualenv
+pyenv virtualenv flower-eval
+pyenv activate 3.11.11/envs/flower-eval
+
 # From a new python environment, run:
 pip install -r requirements.txt
 
-# Log in HuggingFace account
-huggingface-cli login
+# Log in HuggingFace account is not required for this model
+# huggingface-cli login
 ```
 
 ## Generate model decision & calculate accuracy
@@ -27,10 +35,10 @@ huggingface-cli login
 
 ```bash
 python eval.py \
---base-model-name-path=your-base-model-name \ # e.g., mistralai/Mistral-7B-v0.3
---peft-path=/path/to/fine-tuned-peft-model-dir/ \ # e.g., ./peft_1
+--base-model-name-path=your-base-model-name \ # e.g., NX-AI/xLSTM-7b
+--peft-path=/path/to/fine-tuned-peft-model-dir/ \ # e.g., ./peft_100
 --run-name=fl  \ # specified name for this run  
---batch-size=16 \
+--batch-size=4 \
 --quantization=4 \
 --category=stem,social_sciences,humanities
 ```

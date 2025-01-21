@@ -104,16 +104,9 @@ The configs are defined in `[tool.flwr.app.config]` entry of `pyproject.toml`, a
 flwr run
 ```
 
-## VRAM consumption
+## Running evaluation
 
-Given a Mistral-7B model with 4-bit quantization, the estimated VRAM consumption per client for each challenge is:
-
-| Challenges | GeneralNLP |   Finance  |   Medical  |    Code    |
-| :--------: | :--------: | :--------: | :--------: | :--------: |
-|    VRAM    | ~25.50 GB  | ~17.30 GB  | ~22.80 GB  | ~17.40 GB  |
-
-You can adjust the CPU/GPU resources you assign to each of the clients based on your device, which are specified with `options.backend.client-resources.num-cpus` and `options.backend.client-resources.num-gpus` under `[tool.flwr.federations.local-simulation]` entry in `pyproject.toml`.
-
+Please check [flowertune_eval](https://github.com/mrs83/FlowerTune-xLSTM-7b-NLP/tree/main/flowertune_eval).
 
 ## Model saving
 
